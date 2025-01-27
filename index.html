@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The NRH Cam Foundation</title>
 
   <!-- Favicon -->
@@ -19,7 +19,7 @@
   />
 
   <style>
-    /* Global reset / box-sizing */
+    /* RESET / GLOBAL STYLES */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -27,9 +27,8 @@
     }
 
     /* ---------------------------------------------------
-      Animated Background
-      --------------------------------------------------- */
-    /* This overlay covers the entire viewport and animates a gradient. */
+       ANIMATED BACKGROUND
+       --------------------------------------------------- */
     body::before {
       content: "";
       position: fixed;
@@ -37,11 +36,13 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: -999; /* Sit behind all page content */
+      z-index: -999;
+      /* Multi-stop gradient, animated */
       background: linear-gradient(-45deg, #333, #555, #444, #666);
       background-size: 400% 400%;
       animation: gradientShift 15s ease infinite;
     }
+
     @keyframes gradientShift {
       0% {
         background-position: 0% 50%;
@@ -55,36 +56,40 @@
     }
 
     /* ---------------------------------------------------
-      Light / Dark Mode Styles
-      --------------------------------------------------- */
+       LIGHT / DARK MODE STYLES
+       --------------------------------------------------- */
     body {
       font-family: "Work Sans", sans-serif;
-      background-color: #fff; /* Light mode background */
-      color: #000; /* Light mode text */
+      /* Let the animated gradient show through */
+      background: transparent;
+      color: #000;
       line-height: 1.6;
-      transition: background-color 0.5s, color 0.5s;
+      transition: color 0.5s;
     }
 
-    /* Dark Mode Overrides */
     body.dark-mode {
-      background-color: #111; /* Dark mode background */
-      color: #fff; /* Dark mode text */
+      color: #fff; 
+      /* Use a slightly transparent dark overlay if desired */
+      background: rgba(17, 17, 17, 0.85);
     }
 
     /* ---------------------------------------------------
-      Header Styles
-      --------------------------------------------------- */
+       HEADER WITH DECORATIVE ART
+       --------------------------------------------------- */
     header {
-      /* Because of our sticky nav, give header a standard background.
-         The gradient is behind everything, so no conflict. */
-      background: linear-gradient(45deg, #333, #555);
-      color: #fff;
-      padding: 2em 1em;
-      text-align: center;
       position: relative;
+      padding: 3em 1em;
+      text-align: center;
+      color: #fff;
+
+      /* SAMPLE decorative image for the top art
+         Replace the URL below with your own swirl/pattern image. */
+      background: 
+        url("https://via.placeholder.com/1600x400.png?text=Decorative+Art")
+        no-repeat 
+        center center / cover;
     }
 
-    /* Brand at the top-left */
     #brand {
       position: absolute;
       top: 20px;
@@ -103,17 +108,17 @@
       font-size: 2rem;
       text-decoration: underline;
       margin-bottom: 0;
-      color: #ffffff;
+      color: #fff; /* Ensure white text over decorative image */
     }
 
     /* ---------------------------------------------------
-      Sticky Navigation
-      --------------------------------------------------- */
+       STICKY NAVIGATION
+       --------------------------------------------------- */
     nav {
-      position: sticky; 
-      top: 0; 
-      z-index: 999; /* On top of content */
-      background-color: #444;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background-color: #444; 
       display: flex;
       justify-content: center;
       align-items: center;
@@ -157,28 +162,15 @@
     }
 
     /* ---------------------------------------------------
-      Container for Sections
-      --------------------------------------------------- */
+       CONTAINER & SECTION STYLES
+       --------------------------------------------------- */
     .container {
       max-width: 850px;
       width: 90%;
+      /* Center the container for most sections */
       margin: 2em auto;
     }
 
-    /* Headings (inherit color from body) */
-    h1,
-    h2,
-    h3 {
-      color: inherit;
-    }
-
-    /* Underlined headings in special sections & footer */
-    #newSongSection h2,
-    footer p {
-      text-decoration: underline;
-    }
-
-    /* Fade-in animation for sections */
     section {
       opacity: 0;
       transform: translateY(30px);
@@ -193,21 +185,30 @@
       }
     }
 
-    /* Paragraph styles */
+    h1,
+    h2,
+    h3 {
+      color: inherit; 
+    }
+
     p {
       line-height: 1.7;
       margin-bottom: 1.5em;
     }
 
-    /* Image styling */
+    #newSongSection h2,
+    footer p {
+      text-decoration: underline;
+    }
+
     img {
       max-width: 100%;
       height: auto;
     }
 
     /* ---------------------------------------------------
-      Back to Top Button
-      --------------------------------------------------- */
+       BACK TO TOP BUTTON
+       --------------------------------------------------- */
     #backToTopBtn {
       display: none; /* hidden by default */
       position: fixed;
@@ -229,23 +230,37 @@
     }
 
     /* ---------------------------------------------------
-      Footer Styles
-      --------------------------------------------------- */
+       FOOTER STYLES
+       --------------------------------------------------- */
     footer {
       background-color: #000;
       color: #fff;
       text-align: center;
       padding: 1.5em;
-      position: relative;
-      z-index: 1000;
     }
+
     footer p {
       margin-bottom: 0;
     }
 
     /* ---------------------------------------------------
-      Responsive adjustments
-      --------------------------------------------------- */
+       "NEWEST VIDEO" SECTION ADJUSTMENTS
+       --------------------------------------------------- */
+    #newestVideo {
+      /* Force this section left-aligned within the container */
+      margin-left: 0; 
+      margin-right: auto;
+      text-align: left;
+      max-width: 600px; /* narrower width for a left-aligned look */
+    }
+    /* Center the heading over the video itself */
+    #newestVideo h2 {
+      text-align: center; 
+    }
+
+    /* ---------------------------------------------------
+       RESPONSIVE ADJUSTMENTS
+       --------------------------------------------------- */
     @media (max-width: 600px) {
       header h1 {
         font-size: 1.5rem;
@@ -258,18 +273,23 @@
         top: 15px;
         left: 15px;
       }
+      #newestVideo {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- Header with brand and site title -->
+  <!-- HEADER WITH BRAND & TITLE -->
   <header>
     <span id="brand">SwissTea</span>
     <h1>The NRH Cam Foundation</h1>
   </header>
 
-  <!-- Sticky Navigation bar -->
+  <!-- STICKY NAVIGATION -->
   <nav>
     <a onclick="scrollToSection('newSongSection')">Check Out The New Song</a>
     <a onclick="scrollToSection('accomplishments')">Accomplishments</a>
@@ -278,17 +298,16 @@
     <a onclick="scrollToSection('chapter3')">Chapter 3</a>
     <a onclick="scrollToSection('chapter4')">Chapter 4</a>
     <a onclick="scrollToSection('epilogue')">Epilogue</a>
-    <!-- Light/Dark Mode Toggle Button -->
     <button id="themeToggleBtn">Toggle Dark Mode</button>
   </nav>
 
-  <!-- Back to Top Button -->
+  <!-- BACK TO TOP BUTTON -->
   <button id="backToTopBtn" onclick="scrollToTop()">Top</button>
 
-  <!-- Main Content Container -->
+  <!-- MAIN CONTENT CONTAINER -->
   <div class="container">
 
-    <!-- New Song Section -->
+    <!-- NEW SONG SECTION -->
     <section id="newSongSection">
       <h2>Check out NRH Cam's new song "Hunnid Racks up in my Jeans," now streaming on Spotify!</h2>
       <a
@@ -303,7 +322,7 @@
       </a>
     </section>
 
-    <!-- Accomplishments Section -->
+    <!-- ACCOMPLISHMENTS -->
     <section id="accomplishments">
       <h2>Accomplishments</h2>
       <ul>
@@ -313,95 +332,99 @@
       </ul>
     </section>
 
-    <!-- Chapter 1 -->
+    <!-- CHAPTER 1 -->
     <section id="chapter1">
       <h2>Chapter 1: From the Trenches to the Screens</h2>
       <p>
-        In the heart of St. Louis, Missouri, where city streets echoed with the
-        rhythm of struggle, a tenacious spirit named Cameron W. emerged from
-        the trenches, destined for greatness. Born into a world of adversity,
-        Cameron's early years were marked by a relentless pursuit of dreams
-        amidst the challenges of poverty. Cameron's story began in a small,
-        weather-beaten house where every creaking floorboard and peeling
-        wallpaper told tales of resilience. Raised by a single mother who worked
-        double shifts just to put food on the table, Cameron quickly learned the
-        value of hard work. His mother, a pillar of strength, became his
-        inspiration, instilling in him the importance of perseverance and
-        determination.
+        In the heart of St. Louis, Missouri, where city streets echoed with
+        the rhythm of struggle, a tenacious spirit named Cameron W. emerged
+        from the trenches, destined for greatness. Born into a world of
+        adversity, Cameron's early years were marked by a relentless pursuit
+        of dreams amidst the challenges of poverty. Cameron's story began in
+        a small, weather-beaten house where every creaking floorboard and
+        peeling wallpaper told tales of resilience. Raised by a single mother
+        who worked double shifts just to put food on the table, Cameron
+        quickly learned the value of hard work. His mother, a pillar of
+        strength, became his inspiration, instilling in him the importance of
+        perseverance and determination.
       </p>
       <p>
         The neighborhood, rough around the edges, became the backdrop for
         Cameron's childhood adventures. In those narrow streets and rundown
         buildings, he discovered his refuge – a world of video games. With a
-        beat-up console and borrowed games, he immersed himself in fantastical
-        realms, finding solace in pixels and polygons. Little did he know that
-        this escape would lay the foundation for his future success.
+        beat-up console and borrowed games, he immersed himself in
+        fantastical realms, finding solace in pixels and polygons. Little did
+        he know that this escape would lay the foundation for his future
+        success.
       </p>
     </section>
 
-    <!-- Chapter 2 -->
+    <!-- CHAPTER 2 -->
     <section id="chapter2">
       <h2>Chapter 2: The Twitch Revolution</h2>
       <p>
         As Cameron navigated the complexities of adolescence, the world of
         gaming evolved. What was once a solitary hobby turned into a thriving
-        online community. With an unwavering determination, Cameron transformed
-        his passion for gaming into a career as a Twitch streamer. Starting with
-        a basic setup and a second-hand computer, Cameron's first stream was a
-        modest affair. He played with borrowed games, narrating his virtual
-        adventures with a charisma that resonated with viewers. His authenticity
-        and relatability attracted a growing audience, and soon, his channel
-        gained momentum.
+        online community. With an unwavering determination, Cameron
+        transformed his passion for gaming into a career as a Twitch
+        streamer. Starting with a basic setup and a second-hand computer,
+        Cameron's first stream was a modest affair. He played with borrowed
+        games, narrating his virtual adventures with a charisma that
+        resonated with viewers. His authenticity and relatability attracted a
+        growing audience, and soon, his channel gained momentum.
       </p>
       <p>
-        But success on Twitch wasn't handed to him on a silver platter. Cameron
-        faced his fair share of challenges – technical glitches, internet
-        outages, and the skepticism of those who doubted the legitimacy of a
-        career in gaming. Undeterred, he persevered, continually refining his
-        craft and building a community that extended beyond the screen.
-        Cameron's streams became more than just gaming sessions; they were a
-        platform for connection and camaraderie. Viewers tuned in not just for
-        the games, but for the person behind the controller – a young man who
-        had faced adversity and emerged victorious in the virtual realm.
+        But success on Twitch wasn't handed to him on a silver platter.
+        Cameron faced his fair share of challenges – technical glitches,
+        internet outages, and the skepticism of those who doubted the
+        legitimacy of a career in gaming. Undeterred, he persevered,
+        continually refining his craft and building a community that extended
+        beyond the screen. Cameron's streams became more than just gaming
+        sessions; they were a platform for connection and camaraderie.
+        Viewers tuned in not just for the games, but for the person behind
+        the controller – a young man who had faced adversity and emerged
+        victorious in the virtual realm.
       </p>
     </section>
 
-    <!-- Chapter 3 -->
+    <!-- CHAPTER 3 -->
     <section id="chapter3">
       <h2>Chapter 3: Striking the Right Chords</h2>
       <p>
         As Cameron conquered the world of Twitch, another passion beckoned –
-        music. The dilapidated piano in the corner of his small room became his
-        canvas, and he began teaching himself to play using online tutorials.
-        His innate musical talent blossomed, and soon, Cameron W. wasn't just a
-        gamer; he was a burgeoning artist. Late nights turned into jam sessions,
-        with Cameron experimenting with sounds and melodies. From the raw notes
-        of a guitar to the rhythmic beats of electronic music, he embraced a
-        diverse range of genres, weaving together a musical tapestry that
-        reflected the rich tapestry of his own experiences.
+        music. The dilapidated piano in the corner of his small room became
+        his canvas, and he began teaching himself to play using online
+        tutorials. His innate musical talent blossomed, and soon, Cameron W.
+        wasn't just a gamer; he was a burgeoning artist. Late nights turned
+        into jam sessions, with Cameron experimenting with sounds and
+        melodies. From the raw notes of a guitar to the rhythmic beats of
+        electronic music, he embraced a diverse range of genres, weaving
+        together a musical tapestry that reflected the rich tapestry of his
+        own experiences.
       </p>
       <p>
-        His music became an extension of his identity – a fusion of resilience
-        and creativity. Local gigs led to small-time recognition, and before
-        long, Cameron found himself sharing stages with established artists. His
-        performances were a celebration of his journey, and the audience could
-        feel the authenticity in every chord.
+        His music became an extension of his identity – a fusion of
+        resilience and creativity. Local gigs led to small-time recognition,
+        and before long, Cameron found himself sharing stages with
+        established artists. His performances were a celebration of his
+        journey, and the audience could feel the authenticity in every chord.
       </p>
     </section>
 
-    <!-- Chapter 4 -->
+    <!-- CHAPTER 4 -->
     <section id="chapter4">
       <h2>Chapter 4: Gaming for Good</h2>
       <p>
-        As Cameron's influence grew, he recognized the power he held to make a
-        positive impact on the world. Motivated by the struggles of his
-        upbringing, he transformed into a philanthropic force. Cameron W. became
-        synonymous with "Gaming for Good," a movement that aimed to use the
-        gaming community's collective power to drive positive change. His first
-        venture into philanthropy started in his hometown of St. Louis. Cameron
-        organized charity events, raising funds for local organizations that
-        provided support to struggling families. The response from his community
-        was overwhelming, and it fueled his determination to do more.
+        As Cameron's influence grew, he recognized the power he held to make
+        a positive impact on the world. Motivated by the struggles of his
+        upbringing, he transformed into a philanthropic force. Cameron W.
+        became synonymous with "Gaming for Good," a movement that aimed to
+        use the gaming community's collective power to drive positive
+        change. His first venture into philanthropy started in his hometown
+        of St. Louis. Cameron organized charity events, raising funds for
+        local organizations that provided support to struggling families. The
+        response from his community was overwhelming, and it fueled his
+        determination to do more.
       </p>
       <p>
         Expanding his reach, Cameron initiated global gaming marathons for
@@ -413,43 +436,43 @@
       </p>
     </section>
 
-    <!-- Epilogue -->
+    <!-- EPILOGUE -->
     <section id="epilogue">
       <h2>Epilogue: The Legacy of Cameron W.</h2>
       <p>
-        As the years unfolded, Cameron W.'s legacy continued to grow. His journey
-        from the impoverished streets of St. Louis to the global stage of
-        Twitch, music, and philanthropy became a tale of inspiration for
-        generations to come. He wasn't just a success story; he was a testament
-        to the boundless possibilities that awaited those with passion,
-        perseverance, and an unyielding spirit.
+        As the years unfolded, Cameron W.'s legacy continued to grow. His
+        journey from the impoverished streets of St. Louis to the global stage
+        of Twitch, music, and philanthropy became a tale of inspiration for
+        generations to come. He wasn't just a success story; he was a
+        testament to the boundless possibilities that awaited those with
+        passion, perseverance, and an unyielding spirit.
       </p>
       <p>
         Cameron's impact extended beyond the virtual and musical realms; it
-        reached the very communities that had shaped him. He used his platform
-        not just for personal gain but to uplift those who needed it most. The
-        impoverished streets that once echoed with hardship now resonated with
-        hope, thanks to the efforts of a young man who never forgot where he
-        came from. His Twitch streams continued to draw audiences, not just for
-        the games or the music, but for the genuine connection and positivity
-        that emanated from the screen. Cameron W. had become a symbol of triumph
-        over adversity, a beacon of hope for dreamers everywhere.
+        reached the very communities that had shaped him. He used his
+        platform not just for personal gain but to uplift those who needed it
+        most. The impoverished streets that once echoed with hardship now
+        resonated with hope, thanks to the efforts of a young man who never
+        forgot where he came from. His Twitch streams continued to draw
+        audiences, not just for the games or the music, but for the genuine
+        connection and positivity that emanated from the screen. Cameron W.
+        had become a symbol of triumph over adversity, a beacon of hope for
+        dreamers everywhere.
       </p>
       <p>
         And so, as the sun set on the remarkable journey of Cameron W., his
         story echoed in the hearts of those he had touched. The kid from St.
-        Louis had not only redefined his destiny but had left an indelible mark
-        on the world, proving that with the right mindset and unwavering
-        perseverance, anyone could turn their dreams into reality. The legacy of
-        Cameron W. wasn't just a biography; it was an anthem of triumph and an
-        everlasting reminder that greatness knows no boundaries.
+        Louis had not only redefined his destiny but had left an indelible
+        mark on the world, proving that with the right mindset and unwavering
+        perseverance, anyone could turn their dreams into reality. The legacy
+        of Cameron W. wasn't just a biography; it was an anthem of triumph
+        and an everlasting reminder that greatness knows no boundaries.
       </p>
     </section>
 
-    <!-- Newest Video Section -->
+    <!-- NEWEST VIDEO SECTION (LEFT-ALIGNED, CENTERED HEADING) -->
     <section id="newestVideo">
       <h2>Newest Video</h2>
-      <!-- Responsive YouTube embed -->
       <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
         <iframe
           width="560"
@@ -467,19 +490,19 @@
   </div>
   <!-- /container -->
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <p>&copy; 2023 The NRH Cam Foundation. All rights reserved.</p>
   </footer>
 
   <script>
-    /* Smooth Scroll to Section */
+    // Smooth Scroll to Section
     function scrollToSection(sectionId) {
       const section = document.getElementById(sectionId);
       section.scrollIntoView({ behavior: "smooth" });
     }
 
-    /* Show / Hide Back-to-Top Button on Scroll */
+    // Show / Hide Back-to-Top Button on Scroll
     const backToTopBtn = document.getElementById("backToTopBtn");
     window.addEventListener("scroll", () => {
       if (window.pageYOffset > 300) {
@@ -489,17 +512,16 @@
       }
     });
 
-    /* Back to Top Smooth Scroll */
+    // Back to Top Smooth Scroll
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    /* Light/Dark Mode Toggle */
+    // Light/Dark Mode Toggle
     const themeToggleBtn = document.getElementById("themeToggleBtn");
     themeToggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
     });
   </script>
 </body>
-
 </html>
