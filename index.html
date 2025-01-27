@@ -28,18 +28,22 @@
 
         body {
             font-family: 'Work Sans', sans-serif;
-            background-color: #ffffff; /* White background */
+
+            /* Subtle gradient background to add some artistic flair */
+            background: linear-gradient(130deg, #ffffff 0%, #f2f2f2 100%);
             color: #000000; /* Black text */
             line-height: 1.6;
         }
 
-        /* Header Styles */
+        /* Make the entire header (site title & brand) sticky */
         header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             background: linear-gradient(45deg, #333, #555);
             color: #fff;
             padding: 2em 1em;
             text-align: center;
-            position: relative;
         }
 
         /* Brand at the top-left */
@@ -47,7 +51,7 @@
             position: absolute;
             top: 20px;
             left: 30px;
-            font-family: 'Playfair Display', serif; 
+            font-family: 'Playfair Display', serif;
             font-size: 24px;
             letter-spacing: 1px;
             font-weight: bold;
@@ -61,12 +65,14 @@
             font-size: 2rem;
             text-decoration: underline;
             margin-bottom: 0;
-            /* Changed the color to white */
             color: #ffffff; 
         }
 
-        /* Navigation Styles */
+        /* Navigation Styles (also sticky) */
         nav {
+            position: sticky;
+            top: 70px; /* Keeps it below the header so they don't overlap */
+            z-index: 999;
             background-color: #444;
             display: flex;
             justify-content: center;
@@ -190,7 +196,6 @@
 
     <!-- Main Content Container -->
     <div class="container">
-
         <!-- New Song Section -->
         <section id="newSongSection">
             <h2>Check out NRH Cam's new song "Hunnid Racks up in my Jeans," now streaming on Spotify!</h2>
@@ -285,8 +290,8 @@
             <p>
                 Expanding his reach, Cameron initiated global gaming marathons for various charitable causes. From disaster relief to education
                 initiatives, his community rallied behind him, raising significant amounts for organizations dedicated to making a difference.
-                Cameron's Twitch channel became a hub for generosity, and his fans, inspired by his example, actively participated in giving back to
-                the world.
+                Cameron's Twitch channel became a hub for generosity, and his fans, inspired by his example, actively participated in giving back
+                to the world.
             </p>
         </section>
 
@@ -316,7 +321,8 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2023 The NRH Cam Foundation. All rights reserved.</p>
+        <!-- Updated the text here -->
+        <p>&copy; 2023-2025 The NRH Cam Foundation. All rights reserved.</p>
     </footer>
 
     <script>
