@@ -56,21 +56,24 @@
     }
 
     /* ---------------------------------------------------
-       LIGHT / DARK MODE STYLES
+       TEXT & BODY STYLES
        --------------------------------------------------- */
     body {
       font-family: "Work Sans", sans-serif;
-      /* Let the animated gradient show through */
+      /* Transparent background to let the gradient show through */
       background: transparent;
-      color: #000;
+      /* Default text color is white */
+      color: #fff; 
       line-height: 1.6;
-      transition: color 0.5s;
     }
 
-    body.dark-mode {
-      color: #fff; 
-      /* Use a slightly transparent dark overlay if desired */
-      background: rgba(17, 17, 17, 0.85);
+    /* Make headings black (h1, h2, h3) */
+    h1, h2, h3 {
+      color: #000;
+    }
+
+    p {
+      margin-bottom: 1.5em;
     }
 
     /* ---------------------------------------------------
@@ -81,9 +84,7 @@
       padding: 3em 1em;
       text-align: center;
       color: #fff;
-
-      /* SAMPLE decorative image for the top art
-         Replace the URL below with your own swirl/pattern image. */
+      /* Replace this placeholder image with your own decorative art */
       background: 
         url("https://via.placeholder.com/1600x400.png?text=Decorative+Art")
         no-repeat 
@@ -108,7 +109,7 @@
       font-size: 2rem;
       text-decoration: underline;
       margin-bottom: 0;
-      color: #fff; /* Ensure white text over decorative image */
+      color: #fff; /* White over decorative image */
     }
 
     /* ---------------------------------------------------
@@ -118,7 +119,7 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      background-color: #444; 
+      background-color: #444;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -144,30 +145,12 @@
       transform: scale(1.05);
     }
 
-    /* Light/Dark Mode Toggle Button */
-    #themeToggleBtn {
-      background-color: #555;
-      color: #fff;
-      font-weight: 700;
-      border-radius: 4px;
-      margin: 0.5em;
-      padding: 0.6em 1.2em;
-      cursor: pointer;
-      border: none;
-      transition: transform 0.2s;
-    }
-    #themeToggleBtn:hover {
-      background-color: #666;
-      transform: scale(1.05);
-    }
-
     /* ---------------------------------------------------
        CONTAINER & SECTION STYLES
        --------------------------------------------------- */
     .container {
       max-width: 850px;
       width: 90%;
-      /* Center the container for most sections */
       margin: 2em auto;
     }
 
@@ -183,17 +166,6 @@
         opacity: 1;
         transform: translateY(0);
       }
-    }
-
-    h1,
-    h2,
-    h3 {
-      color: inherit; 
-    }
-
-    p {
-      line-height: 1.7;
-      margin-bottom: 1.5em;
     }
 
     #newSongSection h2,
@@ -283,7 +255,7 @@
 </head>
 
 <body>
-  <!-- HEADER WITH BRAND & TITLE -->
+  <!-- HEADER -->
   <header>
     <span id="brand">SwissTea</span>
     <h1>The NRH Cam Foundation</h1>
@@ -298,7 +270,6 @@
     <a onclick="scrollToSection('chapter3')">Chapter 3</a>
     <a onclick="scrollToSection('chapter4')">Chapter 4</a>
     <a onclick="scrollToSection('epilogue')">Epilogue</a>
-    <button id="themeToggleBtn">Toggle Dark Mode</button>
   </nav>
 
   <!-- BACK TO TOP BUTTON -->
@@ -336,16 +307,16 @@
     <section id="chapter1">
       <h2>Chapter 1: From the Trenches to the Screens</h2>
       <p>
-        In the heart of St. Louis, Missouri, where city streets echoed with
-        the rhythm of struggle, a tenacious spirit named Cameron W. emerged
-        from the trenches, destined for greatness. Born into a world of
-        adversity, Cameron's early years were marked by a relentless pursuit
-        of dreams amidst the challenges of poverty. Cameron's story began in
-        a small, weather-beaten house where every creaking floorboard and
-        peeling wallpaper told tales of resilience. Raised by a single mother
-        who worked double shifts just to put food on the table, Cameron
-        quickly learned the value of hard work. His mother, a pillar of
-        strength, became his inspiration, instilling in him the importance of
+        In the heart of St. Louis, Missouri, where city streets echoed with the
+        rhythm of struggle, a tenacious spirit named Cameron W. emerged from
+        the trenches, destined for greatness. Born into a world of adversity,
+        Cameron's early years were marked by a relentless pursuit of dreams
+        amidst the challenges of poverty. Cameron's story began in a small,
+        weather-beaten house where every creaking floorboard and peeling
+        wallpaper told tales of resilience. Raised by a single mother who
+        worked double shifts just to put food on the table, Cameron quickly
+        learned the value of hard work. His mother, a pillar of strength,
+        became his inspiration, instilling in him the importance of
         perseverance and determination.
       </p>
       <p>
@@ -486,7 +457,6 @@
         ></iframe>
       </div>
     </section>
-
   </div>
   <!-- /container -->
 
@@ -516,12 +486,6 @@
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-
-    // Light/Dark Mode Toggle
-    const themeToggleBtn = document.getElementById("themeToggleBtn");
-    themeToggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-    });
   </script>
 </body>
 </html>
